@@ -1,0 +1,246 @@
+/* 通用样式 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #2c3e50; /* 深蓝色背景 */
+    color: #ecf0f1; /* 浅色文字 */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden; /* 防止滚动条 */
+}
+
+/* 头部样式 */
+header {
+    background-color: #34495e; /* 较深的蓝色 */
+    padding: 15px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000; /* 确保在最上层 */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #ecf0f1;
+}
+
+.system-status {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.status-normal {
+    background-color: #27ae60; /* 绿色 */
+}
+
+.status-warning {
+    background-color: #f39c12; /* 橙色 */
+}
+
+.status-evacuation {
+    background-color: #e74c3c; /* 红色 */
+    animation: pulse 1s infinite alternate; /* 警报动画 */
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+}
+
+/* 主内容区域 */
+.main-content {
+    display: flex;
+    flex: 1; /* 占据剩余空间 */
+    padding: 10px;
+    gap: 10px; /* 间距 */
+}
+
+/* 左侧面板 - 传感器数据 */
+.sensor-panel {
+    background-color: #34495e;
+    padding: 15px;
+    border-radius: 8px;
+    width: 280px; /* 固定宽度 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto; /* 允许滚动 */
+}
+
+.sensor-panel h2 {
+    margin-top: 0;
+    color: #ecf0f1;
+    font-size: 20px;
+    border-bottom: 1px solid #4a627a;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.sensor-group {
+    margin-bottom: 15px;
+}
+
+.sensor-group h3 {
+    margin: 0 0 8px 0;
+    color: #bdc3c7;
+    font-size: 16px;
+}
+
+.sensor-data p {
+    margin: 5px 0;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sensor-data p strong {
+    color: #f1c40f; /* 黄色高亮数据 */
+    font-size: 15px;
+}
+
+/* 地图区域 */
+#map {
+    flex: 1; /* 占据剩余所有空间 */
+    background-color: #2c3e50;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1; /* 确保在其他元素之下 */
+}
+
+/* 右侧面板 - 警报和控制 */
+.alert-control-panel {
+    background-color: #34495e;
+    padding: 15px;
+    border-radius: 8px;
+    width: 280px; /* 固定宽度 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.alert-control-panel h2 {
+    margin-top: 0;
+    color: #ecf0f1;
+    font-size: 20px;
+    border-bottom: 1px solid #4a627a;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.alert-message {
+    background-color: #c0392b; /* 红色背景 */
+    color: #ecf0f1;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    display: none; /* 默认隐藏 */
+    animation: blink 0.8s infinite alternate; /* 警报闪烁 */
+}
+
+@keyframes blink {
+    from { opacity: 1; }
+    to { opacity: 0.5; }
+}
+
+.control-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.control-buttons button {
+    background-color: #2980b9; /* 蓝色按钮 */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.control-buttons button:hover {
+    background-color: #3498db;
+}
+
+.control-buttons button:active {
+    background-color: #21618c;
+}
+
+/* Leaflet 覆盖样式 */
+.leaflet-container {
+    background-color: #2c3e50; /* 地图背景色 */
+}
+
+/* 自定义路径样式 */
+.leaflet-path-gas-low {
+    color: #27ae60; /* 绿色 */
+    weight: 5;
+    opacity: 0.8;
+}
+
+.leaflet-path-gas-medium {
+    color: #f39c12; /* 橙色 */
+    weight: 7;
+    opacity: 0.8;
+}
+
+.leaflet-path-gas-high {
+    color: #e74c3c; /* 红色 */
+    weight: 9;
+    opacity: 0.9;
+}
+
+/* 节点标记样式 */
+.gas-node-marker {
+    background-color: #ecf0f1;
+    border: 2px solid;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    opacity: 0.8;
+}
+
+.gas-node-marker-low { border-color: #27ae60; }
+.gas-node-marker-medium { border-color: #f39c12; }
+.gas-node-marker-high { border-color: #e74c3c; }
+
+/* 响应式设计 (简单示例) */
+@media (max-width: 1200px) {
+    .main-content {
+        flex-direction: column;
+    }
+    .sensor-panel, .alert-control-panel {
+        width: auto; /* 宽度自适应 */
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .main-content {
+        padding: 5px;
+        gap: 5px;
+    }
+}
+
